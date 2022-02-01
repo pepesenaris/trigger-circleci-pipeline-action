@@ -19,6 +19,12 @@ info(`Repo: ${repoName}`);
 const ref = context.ref;
 
 const branch = () => {
+  const headRef = getInput("GHA_HeadRef");
+
+  if (headRef && headRef.length > 0) {
+    return headRef;
+  }
+
   if (ref.startsWith("refs/heads/")) {
     return ref.substring(11);
   }

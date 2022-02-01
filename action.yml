@@ -4,6 +4,11 @@ branding:
     icon: "check-circle"
     color: "green"
 inputs:
+  GHA_HeadRef:
+    required: false
+    description: >
+      Allows to pass the head ref when the action is run on a pull request.
+      If present it will override `context.ref` as the source of truth for the branch
   GHA_Meta:
     required: false
     description: 'An optional additional metadata parameter. Will be available on the CircleCI pipeline as GHA_Meta'

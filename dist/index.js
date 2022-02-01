@@ -12711,6 +12711,12 @@ const [, , repoOrg, repoName] = pattern.exec(payload.repository.url);
 const ref = _actions_github__WEBPACK_IMPORTED_MODULE_1__.context.ref;
 
 const branch = () => {
+  const headRef = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("GHA_HeadRef");
+
+  if (headRef && headRef.length > 0) {
+    return headRef;
+  }
+
   if (ref.startsWith("refs/heads/")) {
     return ref.substring(11);
   }
