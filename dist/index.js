@@ -12743,10 +12743,12 @@ const body = {
   parameters: parameters,
 };
 
-if (tag) {
+if (tag()) {
   Object.assign(parameters, { GHA_Tag: tag() });
+  Object.assign(body, { tag: tag() });
 } else {
   Object.assign(parameters, { GHA_Branch: branch() });
+  Object.assign(body, { branch: branch() });
 }
 
 const url = `https://circleci.com/api/v2/project/gh/${repoOrg}/${repoName}/pipeline`;
